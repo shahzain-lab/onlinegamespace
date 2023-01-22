@@ -41,21 +41,6 @@ const Games = ({game, gameList}: {game: string; gameList: string}) => {
 export default Games
 
 
-// get ID's
-export async function getStaticPaths() {
-  const FTP_BASE_URL = 'https://free-to-play-games-database.p.rapidapi.com';
-
-    const getGames = await axios({
-      ...ftpRequestConfig,
-      url: `${FTP_BASE_URL}/api/games`
-    })
-    const paths = getGames?.data?.map((game: IGamesList) => {
-      return {params: { game: game.id.toString() }}
-    });
-
-    return { paths, fallback: true }
-}
-
 export async function getStaticProps(context: GetStaticPropsContext) {
   const game_id = context?.params?.game as string;
 
@@ -78,4 +63,20 @@ export async function getStaticProps(context: GetStaticPropsContext) {
         gameList: JSON.stringify(gamesByCategories) 
       }
     }
+}
+
+
+// get ID's
+export async function getStaticPaths() {
+  const FTP_BASE_URL = 'https://free-to-play-games-database.p.rapidapi.com';
+
+    const getGames = await axios({
+      ...ftpRequestConfig,
+      url: `${FTP_BASE_URL}/api/games`
+    })
+    const paths = getGames?.data?.map((game: IGamesList) => {
+      return {params: { game: game.id.toString() }}
+    });
+
+    return { paths, fallback: true }
 }
