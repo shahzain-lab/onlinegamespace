@@ -37,7 +37,7 @@ const GameLeftDetail = ({game}: {game: IGameDetails}) => {
               background={'blue.300'}
               color='black'
               _hover={{background:'blue.300'}} 
-              size={'lg'}> Play Now <Icon as={AiOutlineArrowRight} /></Button>
+              size={['md', 'lg']}> Play Now <Icon as={AiOutlineArrowRight} /></Button>
             </Link>
           </Flex>
           <Text fontSize='lg' display={'flex'} alignItems={'center'}>

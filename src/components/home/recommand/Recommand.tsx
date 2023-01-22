@@ -1,22 +1,21 @@
 import React from 'react'
-import styles from './Recommand.module.scss';
-import { Icon, Text } from '@chakra-ui/react'
+import { Box,  Icon, SimpleGrid, Text } from '@chakra-ui/react'
 import ProductCard from '@/components/helpers/product-card';
 import { FaArrowRight } from 'react-icons/fa'
 import Link from 'next/link';
 import { IGamesList } from '@/interfaces/context/IAPIService';
 
-const Recommand = ({gamesList}: {gamesList: IGamesList[]}) => {
+const Recommand = ({title, gamesList, my}: {title: string; gamesList: IGamesList[], my?: string | number}) => {
   
   return (
-    <div className={styles.container}>
-      <Text fontSize='30px' color={'#aaaaaa'}>Personalized Recommendations!</Text>
+    <Box w='100%' my={my}>
+      <Text fontSize={[30]} color={'#aaaaaa'}>{title}</Text>
       {gamesList && (
-        <div className={styles.products}>
+        <SimpleGrid columns={[1, 2, 3, 4]} gap={15} mt={15}>
          {gamesList?.slice(0,8)?.map((game, i) => (
            <ProductCard key={i} game={game} />
            ))}
-        </div> 
+        </SimpleGrid> 
       )}
       <Link href={'/games'}>
         <Text
@@ -31,7 +30,7 @@ const Recommand = ({gamesList}: {gamesList: IGamesList[]}) => {
         borderRadius='lg'
         >More Games <Icon pl={1} pt={1} as={FaArrowRight} /></Text>
       </Link>
-    </div>
+    </Box>
   )
 }
 

@@ -23,10 +23,10 @@ const Index = ({ gamesList }: {gamesList: string}) => {
       >
         {/* Hero page */}
         <HeroEpic />
-        <Box px={90}>
+        <Box w='100%' px={[5, 15, 20, 90]}>
 
           {/* Recommanded Page */}
-          <Recommand gamesList={_gamesList} />
+          <Recommand title='Personalized Recommendations!' gamesList={_gamesList} my={'48px'} />
 
           {/* Recent Page */}
           <Recent gamesList={_gamesList} />

@@ -21,7 +21,7 @@ const Games = ({ gamesList }: {gamesList: string}) => {
         />
       }
     >
-      <Box px={90}>
+      <Box px={[5, 15, 20, 90]}>
           <Text mt={'24px'} mb={'10px'} fontSize={'32.7px'} color='#aaaaaa'>Top Free Games for PC and Browser In 2023!</Text>
           {/* Latest PLAYED Slides */}
           <LatestPlayed gamesList={_gamesList} />

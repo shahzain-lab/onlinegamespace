@@ -39,7 +39,7 @@ const ProductCard = ({game, noBody=false}: {game: IGamesList,noBody?: boolean}) 
               {!noBody && (
               <Stack mt='4' color={'#aaaaaa'} spacing='3'>
                 <Heading display={'flex'} justifyContent='space-between'>
-                  <Text fontSize={'15px'} size='md'>{game?.title}</Text>
+                  <Text noOfLines={1} fontSize={'15px'} size='md'>{game?.title}</Text>
                   <Badge background={'#be32d3'} color='white' fontWeight='bold' py={.5} fontSize='10px'>FREE</Badge>
                 </Heading>
                 <Text fontSize={'sm'} color={'#7a8288'} noOfLines={1}>

@@ -19,11 +19,10 @@ import Link from 'next/link';
 const RecentCard = ({game}: {game: IGamesList}) => {
   return (
     <Link href={`/games/${game.id}`}>
-          <Card background={'#3a3f44'}
+    <Card background={'#3a3f44'}
           direction={{ base: 'column', sm: 'row' }}
           overflow='hidden'
-          cursor={'pointer'}
-        >
+          cursor={'pointer'}>
           {!game && (
             <Stack>
                <Skeleton height='100px' />

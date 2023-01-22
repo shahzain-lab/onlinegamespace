@@ -1,3 +1,4 @@
+import { Box } from '@chakra-ui/react'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -5,7 +6,7 @@ import styles from './Header.module.scss'
 
 const Header = () => {
   return (
-    <div className={styles.container}>
+    <Box px={[5, 15, 20, 90]} className={styles.container}>
       <Link href={'/'}>
           <Image
           alt={'epic store free games listing'} 
@@ -14,7 +15,7 @@ const Header = () => {
           height={45}
           />
       </Link>
-    </div>
+    </Box>
   )
 }
 

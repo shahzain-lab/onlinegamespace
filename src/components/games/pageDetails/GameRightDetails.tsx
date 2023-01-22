@@ -1,6 +1,6 @@
 import { IGameDetails } from '@/interfaces/context/IAPIService'
 import { Box, Image, Grid, Text, Icon, Stack, Skeleton } from '@chakra-ui/react'
-import React, { useState } from 'react'
+import React, { Fragment, useState } from 'react'
 import { IoIosArrowForward } from 'react-icons/io'
 import {
   Breadcrumb,
@@ -28,22 +28,22 @@ const GameRightDetails = ({game}: {game: IGameDetails}) => {
       )}
       <Breadcrumb spacing='8px' separator={<Icon as={IoIosArrowForward} color='#7a8288' />}>
         <BreadcrumbItem>
-          <BreadcrumbLink pb={2} color='#7a8288' href='/'>Home</BreadcrumbLink>
+          <BreadcrumbLink pb={2} fontSize={[13, 17]} color='#7a8288' href='/'>Home</BreadcrumbLink>
         </BreadcrumbItem>
 
         <BreadcrumbItem>
-          <BreadcrumbLink pb={2} color='#7a8288' href='/games'>Free Games</BreadcrumbLink>
+          <BreadcrumbLink pb={2} fontSize={[13, 17]} color='#7a8288' href='/games'>Free Games</BreadcrumbLink>
         </BreadcrumbItem>
 
         <BreadcrumbItem isCurrentPage>
-          <BreadcrumbLink pb={2} color='#7a8288' href={`/games/${game?.id}`}>{game?.title}</BreadcrumbLink>
+          <BreadcrumbLink pb={2} fontSize={[13, 17]} color='#7a8288' href={`/games/${game?.id}`}>{game?.title}</BreadcrumbLink>
         </BreadcrumbItem>
       </Breadcrumb>
 
-        <Text fontSize={'32px'} fontWeight='bold' color='#aaaaaa'>{game.title}</Text>
+        <Text fontSize={[28,32]} fontWeight='bold' color='#aaaaaa'>{game.title}</Text>
        
         <Box my={5}>
-          <Text fontSize={'24px'} color='#aaaaaa'>About {game.title}</Text>
+          <Text fontSize={[20, 24]} color='#aaaaaa'>About {game.title}</Text>
           
               <Text fontSize={'md'} lineHeight='22.5px' color={'#7a8288'}
                 dangerouslySetInnerHTML={{__html: game?.description &&
@@ -71,9 +71,9 @@ const GameRightDetails = ({game}: {game: IGameDetails}) => {
           </Box>
           <Box borderBottom='.5px solid #424141' />
         <Box my={5}>
-          <Text fontSize={'24px'} color='#aaaaaa'>Additional Information</Text>
+          <Text fontSize={[20, 24]} color='#aaaaaa'>Additional Information</Text>
           {/* <Divider background='#aaaaaa' /> */}
-          <Grid my={3} templateColumns={'repeat(3, 1fr)'} templateRows='repeat(2, 1fr)' gap={4}>
+          <Grid my={3} templateColumns={['repeat(2, 1fr)', 'repeat(3, 1fr)']} templateRows='repeat(2, 1fr)' gap={4}>
             <Box>
               <Text color={'#7a8288'}>Title</Text>
               <Text color='#aaaaaa'>{game?.title}</Text>
@@ -102,16 +102,15 @@ const GameRightDetails = ({game}: {game: IGameDetails}) => {
          </Box>
           <Box borderBottom='.5px solid #424141' />
          <Box my={5}>
-         <Text fontSize={'24px'} color='#aaaaaa'>{game.title} screenshots</Text>
-          <Grid my={3} templateColumns={'repeat(3, 1fr)'} gap={6}>
+         <Text fontSize={[20, 24]} color='#aaaaaa'>{game.title} screenshots</Text>
+          <Grid my={3} templateColumns={['repeat(2, 1fr)', 'repeat(3, 1fr)']} gap={6}>
               {game.screenshots.map((img) => (
-                <>
+                <Fragment key={img.id}>
                   <Image
-                    key={img.id}
                     src={img.image}
                     borderRadius='lg'
                   />
-                </>
+                </Fragment>
               ))}
           </Grid>
          </Box>
@@ -119,10 +118,10 @@ const GameRightDetails = ({game}: {game: IGameDetails}) => {
            <>
             <Box borderBottom='.5px solid #424141' />
             <Box my={5}>
-            <Text fontSize={'24px'} color='#aaaaaa'>Minimum System Requirements 
+            <Text fontSize={[20, 24]} color='#aaaaaa'>Minimum System Requirements 
             <span style={{color:'#7a8288', fontSize: '18px', fontWeight: '500', paddingLeft: '8px'}}>({game.platform})</span>
             </Text>
-            <Grid my={3} templateColumns={'repeat(3, 1fr)'} templateRows='repeat(2, 1fr)' gap={3}>
+            <Grid my={3} templateColumns={['repeat(2, 1fr)', 'repeat(3, 1fr)']} templateRows='repeat(2, 1fr)' gap={3}>
                 <Box>
                   <Text color={'#7a8288'}>OS</Text>
                   <Text color='#aaaaaa'>{game?.minimum_system_requirements?.os}</Text>

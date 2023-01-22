@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useState } from 'react'
 import {
-  Select, Text, Icon
+  Select, Text, Icon, SimpleGrid
 } from '@chakra-ui/react';
 import styles from './Filters.module.scss';
 import { AiFillFilter } from 'react-icons/ai'
@@ -27,7 +27,7 @@ const Filter = () => {
   const _sortBy = ['Alphabetical', 'Relevance', 'Popularity'];
 
   return (
-    <div className={styles.filters}>
+    <SimpleGrid my={30} alignItems='center' columns={[1, 2, 3, 4]} gap={8}>
       {/* BY PLATFORM */}
       <div>
         <Select 
@@ -81,7 +81,7 @@ const Filter = () => {
 
       {/* MORE */}
       <Text fontSize='15px' cursor='pointer' color='#e4e2e2'><Icon mb={-.5} mr={1} fontSize={'15px'} as={AiFillFilter} color='blue.300' />Addvanced Filters</Text>
-    </div>
+    </SimpleGrid>
   )
 }
 
