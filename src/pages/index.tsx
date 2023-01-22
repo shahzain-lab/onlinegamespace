@@ -9,8 +9,8 @@ import axios from 'axios';
 import { ftpRequestConfig } from '@/services/free-to-play.config';
 import { IGamesList } from '@/interfaces/context/IAPIService';
 
-const Index = ({ gamesList }: {gamesList: string}) => {
-  const _gamesList = JSON.parse(gamesList) as IGamesList[];
+const Index = ({ gamesList }: {gamesList: IGamesList[]}) => {
+  // const _gamesList = JSON.parse(gamesList) as IGamesList[];
  
   return (
     <Main
@@ -26,10 +26,10 @@ const Index = ({ gamesList }: {gamesList: string}) => {
         <Box w='100%' px={[5, 15, 20, 90]}>
 
           {/* Recommanded Page */}
-          <Recommand title='Personalized Recommendations!' gamesList={_gamesList} my={'48px'} />
+          <Recommand title='Personalized Recommendations!' gamesList={gamesList} my={'48px'} />
 
           {/* Recent Page */}
-          <Recent gamesList={_gamesList} />
+          <Recent gamesList={gamesList} />
       </Box>
     </Main>
   );
@@ -45,18 +45,16 @@ export async function getStaticProps() {
       ...ftpRequestConfig,
       url: `${FTP_BASE_URL}/api/games`
     })
+    const data = getGames.data;
     
     return {
       props: {
-        header: JSON.stringify(getGames.headers),
-        gamesList: JSON.stringify(getGames.data) 
+        gamesList: data
       }
     }
   } catch(err) {
-    console.log('err',err)
     return {
       props: {
-        header: err,
         gamesList: null
       }
     }

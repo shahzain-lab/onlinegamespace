@@ -9,8 +9,8 @@ import { Box, Text } from '@chakra-ui/react'
 import axios from 'axios'
 import React from 'react'
 
-const Games = ({ gamesList }: {gamesList: string}) => {
-  const _gamesList = JSON.parse(gamesList) as IGamesList[];
+const Games = ({ gamesList }: {gamesList: IGamesList[]}) => {
+  // const _gamesList = JSON.parse(gamesList) as IGamesList[];
 
   return (
       <Main
@@ -24,13 +24,13 @@ const Games = ({ gamesList }: {gamesList: string}) => {
       <Box px={[5, 15, 20, 90]}>
           <Text mt={'24px'} mb={'10px'} fontSize={'32.7px'} color='#aaaaaa'>Top Free Games for PC and Browser In 2023!</Text>
           {/* Latest PLAYED Slides */}
-          <LatestPlayed gamesList={_gamesList} />
+          <LatestPlayed gamesList={gamesList} />
 
           {/* SOME FILTERS */}
           <Filter />
 
           {/* ALL GAMES */}
-          <AllGames gamesList={_gamesList} />
+          <AllGames gamesList={gamesList} />
       </Box>
     </Main>
   )
@@ -46,9 +46,10 @@ export async function getStaticProps() {
       ...ftpRequestConfig,
       url: `${FTP_BASE_URL}/api/games`
     })
+    const data = getGames.data;
     return {
       props: {
-        gamesList: JSON.stringify(getGames.data) 
+        gamesList: data
       }
     }
   } catch(err) {

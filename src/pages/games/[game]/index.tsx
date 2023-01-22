@@ -10,27 +10,25 @@ import axios from 'axios'
 import { GetStaticPropsContext } from 'next'
 import React from 'react'
 
-const Games = ({game, gameList}: {game: string; gameList: string}) => {
-  const _game = JSON.parse(game) as IGameDetails;
-  const _gamesList = JSON.parse(gameList) as IGamesList[];
+const Games = ({game, gameList}: {game: IGameDetails; gameList: IGamesList[]}) => {
 
   return (
     <Main
       meta={
       <Meta
-        title={_game?.title || 'game title....'}
-        description={_game?.short_description || 'game description....'}
+        title={game?.title || 'game title....'}
+        description={game?.short_description || 'game description....'}
       />
     }
   >
     <Box px={[5, 15, 20, 90]}> 
      <>
         <Grid my={10} templateColumns={['1fr', '1fr', '1fr', 'repeat(12, 1fr)']} gap={6}>
-          <GridItem colSpan={5}><GameLeftDetail game={_game} /></GridItem>
-          <GridItem colStart={6} colEnd={-1}><GameRightDetails game={_game} /></GridItem>
+          <GridItem colSpan={5}><GameLeftDetail game={game} /></GridItem>
+          <GridItem colStart={6} colEnd={-1}><GameRightDetails game={game} /></GridItem>
         </Grid>   <Box borderBottom='.5px solid #424141' />
         <Box my={3} mb={20}>
-            <Recommand title={`Games like ${_game.title}`} gamesList={_gamesList} />
+            <Recommand title={`Games like ${game.title}`} gamesList={gameList} />
         </Box>
     </>
     </Box>
@@ -50,17 +48,20 @@ export async function getStaticProps(context: GetStaticPropsContext) {
     ...ftpRequestConfig,
     url: `${FTP_BASE_URL}/api/game?id=${game_id}`
   })
+  const gameIdData = getGameByID.data;
   
   const getGameByCategories = await axios({
     ...ftpRequestConfig,
     url: `${FTP_BASE_URL}/api/games`
   })
-  const _gamesByCategories = getGameByCategories?.data?.filter((game: IGamesList) => game?.genre === getGameByID?.data?.genre);
-  const gamesByCategories = _gamesByCategories.length >= 4 ? _gamesByCategories?.slice(0, 8) : getGameByCategories.data?.slice(0, 8);
+  const gameCatData = getGameByCategories.data;
+
+  const _gamesByCategories = gameCatData?.filter((game: IGamesList) => game?.genre === gameIdData.genre);
+  const gamesByCategories = _gamesByCategories.length >= 4 ? _gamesByCategories?.slice(0, 8) : gameCatData?.slice(0, 8);
   return {
       props: {
-        game: JSON.stringify(getGameByID.data),
-        gameList: JSON.stringify(gamesByCategories) 
+        game: gameIdData,
+        gameList: gamesByCategories
       }
     }
 }
@@ -74,8 +75,9 @@ export async function getStaticPaths() {
       ...ftpRequestConfig,
       url: `${FTP_BASE_URL}/api/games`
     })
-    const paths = getGames?.data?.map((game: IGamesList) => {
-      return {params: { game: game.id.toString() }}
+    const data = getGames.data
+    const paths = data?.map((game: IGamesList) => {
+      return {params: { game: `${game.id}` }}
     });
 
     return { paths, fallback: true }
