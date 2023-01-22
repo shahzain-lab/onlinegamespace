@@ -54,7 +54,6 @@ export async function getStaticProps() {
   } catch(err) {
     return {
       props: {
-        header: err,
         gamesList: null
       }
     }

@@ -10,6 +10,7 @@ import { GetStaticPropsContext } from 'next'
 import React from 'react'
 
 const Games = ({game}: {game: string}) => {
+  if(!game) return <Text>Loading ....</Text>
   const _gamesList = JSON.parse(game) as IGameDetails;
 
   return (
