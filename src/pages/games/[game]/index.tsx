@@ -51,7 +51,9 @@ export async function getStaticPaths() {
       ...ftpRequestConfig,
       url: `${FTP_BASE_URL}/api/games`
     })
-    const paths = getGames?.data?.map((game: IGamesList) => game?.id);
+    const paths = getGames?.data?.map((game: IGamesList) => {
+      return {game: game?.id}
+    });
 
     return { paths, fallback: false }
 
