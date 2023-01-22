@@ -10,7 +10,6 @@ import { GetStaticPropsContext } from 'next'
 import React from 'react'
 
 const Games = ({game}: {game: string}) => {
-  if(!game) return <Text color='white'>NOT FOUND</Text>
   const _gamesList = JSON.parse(game) as IGameDetails;
 
   return (
@@ -23,7 +22,6 @@ const Games = ({game}: {game: string}) => {
     }
   >
     <Box px={90}>
-        {game && (
           <>
             <Grid my={10} templateColumns={'repeat(12, 1fr)'} gap={6}>
               <GridItem colSpan={5}><GameLeftDetail game={_gamesList} /></GridItem>
@@ -34,7 +32,6 @@ const Games = ({game}: {game: string}) => {
 
             </Box>
           </>
-        )}
     </Box>
     </Main>
   )
@@ -76,7 +73,6 @@ export async function getStaticProps(context: GetStaticPropsContext) {
   } catch(err) {
     return {
       props: {
-        header: err,
         gamesList: null
       }
     }

@@ -1,5 +1,5 @@
 import { IGameDetails } from '@/interfaces/context/IAPIService'
-import { Box, Image, Grid, Text, Icon } from '@chakra-ui/react'
+import { Box, Image, Grid, Text, Icon, Stack, Skeleton } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { IoIosArrowForward } from 'react-icons/io'
 import {
@@ -18,6 +18,14 @@ const GameRightDetails = ({game}: {game: IGameDetails}) => {
 
   return (
     <div>
+      {!game && (
+        <Stack>
+        <Skeleton height='20px' />
+        <Skeleton height='120px' />
+        <Skeleton height='220px' />
+        <Skeleton height='220px' />
+       </Stack>
+      )}
       <Breadcrumb spacing='8px' separator={<Icon as={IoIosArrowForward} color='#7a8288' />}>
         <BreadcrumbItem>
           <BreadcrumbLink pb={2} color='#7a8288' href='/'>Home</BreadcrumbLink>
