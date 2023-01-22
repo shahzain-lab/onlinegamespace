@@ -1,0 +1,10 @@
+@import './../../styles/theme/color';
+
+.container {
+  background: $cl-dark;
+  height: 56px;
+  box-shadow: $color-shadow;
+  display: flex;
+  align-items: center;
+  padding: 0 90px;
+}

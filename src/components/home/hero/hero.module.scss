@@ -1,0 +1,12 @@
+
+.hero {
+  height: 80vh;
+  // border-radius: 15px;
+  padding: 0 90px;
+  background-image: linear-gradient(325deg, rgba(5,5,113,0.6811099439775911) 0%, rgba(39,43,48,0.258140756302521) 30%, rgba(7,7,109,0.7455357142857143) 73%, rgba(5,5,113,1) 89%),url(/assets/hero-demo.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

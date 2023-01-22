@@ -1,0 +1,15 @@
+
+
+.container {
+  width: 100%;
+  margin: 15px 0;
+  display: grid;
+  grid-template-columns: 70% 30%;
+  gap: 10px;
+
+  .slide {
+    display: grid;
+    grid-template-columns: 55% 45%;
+    gap: 10px;
+  }
+}
