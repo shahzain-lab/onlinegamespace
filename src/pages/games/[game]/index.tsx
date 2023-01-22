@@ -46,7 +46,6 @@ export default Games
 export async function getStaticPaths() {
   const FTP_BASE_URL = 'https://free-to-play-games-database.p.rapidapi.com';
 
-  try{
     const getGames = await axios({
       ...ftpRequestConfig,
       url: `${FTP_BASE_URL}/api/games`
@@ -56,10 +55,6 @@ export async function getStaticPaths() {
     });
 
     return { paths, fallback: false }
-
-  } catch(err) {
-    return { paths: null }
-  }
 }
 
 export async function getStaticProps(context: GetStaticPropsContext) {
