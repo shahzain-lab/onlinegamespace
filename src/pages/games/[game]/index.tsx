@@ -53,7 +53,7 @@ export async function getStaticPaths() {
       return {params: { game: game.id.toString() }}
     });
 
-    return { paths, fallback: 'blocking' }
+    return { paths, fallback: true }
 }
 
 export async function getStaticProps(context: GetStaticPropsContext) {
