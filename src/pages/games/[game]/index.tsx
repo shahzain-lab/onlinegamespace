@@ -1,11 +1,12 @@
 import GameLeftDetail from '@/components/games/pageDetails/GameLeftDetail'
 import GameRightDetails from '@/components/games/pageDetails/GameRightDetails'
-import { IGameDetails } from '@/interfaces/context/IAPIService'
+import { IGameDetails, IGamesList } from '@/interfaces/context/IAPIService'
 import { ftpRequestConfig } from '@/services/free-to-play.config'
 import { Main } from '@/templates/Main'
 import { Meta } from '@/templates/Meta'
 import { Box, Grid, GridItem, Text } from '@chakra-ui/react'
 import axios from 'axios'
+import { GetStaticPropsContext } from 'next'
 import React from 'react'
 
 const Games = ({game}: {game: string}) => {
@@ -41,8 +42,26 @@ const Games = ({game}: {game: string}) => {
 export default Games
 
 
-export async function getStaticProps(context: any) {
-  const game_id = context.params.game as string;
+// get ID's
+export async function getStaticPaths() {
+  const FTP_BASE_URL = 'https://free-to-play-games-database.p.rapidapi.com';
+
+  try{
+    const getGames = await axios({
+      ...ftpRequestConfig,
+      url: `${FTP_BASE_URL}/api/games`
+    })
+    const paths = getGames?.data?.map((game: IGamesList) => game?.id);
+
+    return { paths, fallback: false }
+
+  } catch(err) {
+    return { paths: null, fallback: false }
+  }
+}
+
+export async function getStaticProps(context: GetStaticPropsContext) {
+  const game_id = context?.params?.game as string;
 
   const FTP_BASE_URL = 'https://free-to-play-games-database.p.rapidapi.com';
 
