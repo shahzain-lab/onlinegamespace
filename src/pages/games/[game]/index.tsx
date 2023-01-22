@@ -22,8 +22,7 @@ const Games = ({game}: {game: string}) => {
       />
     }
   >
-    <Box px={90}>
-          <>
+    <Box px={90}>          <>
             <Grid my={10} templateColumns={'repeat(12, 1fr)'} gap={6}>
               <GridItem colSpan={5}><GameLeftDetail game={_gamesList} /></GridItem>
               <GridItem colStart={6} colEnd={-1}><GameRightDetails game={_gamesList} /></GridItem>
@@ -61,7 +60,6 @@ export async function getStaticProps(context: GetStaticPropsContext) {
 
   const FTP_BASE_URL = 'https://free-to-play-games-database.p.rapidapi.com';
 
-  try{
     const getGames = await axios({
       ...ftpRequestConfig,
       url: `${FTP_BASE_URL}/api/game?id=${game_id}`
@@ -71,11 +69,4 @@ export async function getStaticProps(context: GetStaticPropsContext) {
         gamesList: JSON.stringify(getGames.data) 
       }
     }
-  } catch(err) {
-    return {
-      props: {
-        gamesList: null
-      }
-    }
-  }
 }
