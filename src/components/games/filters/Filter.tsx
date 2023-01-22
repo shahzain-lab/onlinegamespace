@@ -2,7 +2,6 @@ import React, { ChangeEvent, useState } from 'react'
 import {
   Select, Text, Icon, SimpleGrid
 } from '@chakra-ui/react';
-import styles from './Filters.module.scss';
 import { AiFillFilter } from 'react-icons/ai'
 
 const Filter = () => {
