@@ -16,8 +16,8 @@ const Games = ({game, gameList}: {game: IGameDetails; gameList: IGamesList[]}) =
     <Main
       meta={
       <Meta
-        title={game?.title || 'game title....'}
-        description={game?.short_description || 'game description....'}
+        title={'game title....'}
+        description={'game description....'}
       />
     }
   >
