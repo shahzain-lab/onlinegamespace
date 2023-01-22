@@ -21,16 +21,20 @@ const Index = ({ gamesList }: {gamesList: IGamesList[]}) => {
         />
       }
       >
-        {/* Hero page */}
-        <HeroEpic />
-        <Box w='100%' px={[5, 15, 20, 90]}>
+        {gamesList && (
+          <>
+            {/* Hero page */}
+            <HeroEpic />
+            <Box w='100%' px={[5, 15, 20, 90]}>
 
-          {/* Recommanded Page */}
-          <Recommand title='Personalized Recommendations!' gamesList={gamesList} my={'48px'} />
+              {/* Recommanded Page */}
+              <Recommand title='Personalized Recommendations!' gamesList={gamesList} my={'48px'} />
 
-          {/* Recent Page */}
-          <Recent gamesList={gamesList} />
-      </Box>
+              {/* Recent Page */}
+              <Recent gamesList={gamesList} />
+          </Box>
+          </>
+        )}
     </Main>
   );
 };

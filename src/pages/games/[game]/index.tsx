@@ -21,17 +21,19 @@ const Games = ({game, gameList}: {game: IGameDetails; gameList: IGamesList[]}) =
       />
     }
   >
-    <Box px={[5, 15, 20, 90]}> 
-     <>
-        <Grid my={10} templateColumns={['1fr', '1fr', '1fr', 'repeat(12, 1fr)']} gap={6}>
-          <GridItem colSpan={5}><GameLeftDetail game={game} /></GridItem>
-          <GridItem colStart={6} colEnd={-1}><GameRightDetails game={game} /></GridItem>
-        </Grid>   <Box borderBottom='.5px solid #424141' />
-        <Box my={3} mb={20}>
-            <Recommand title={`Games like ${game.title}`} gamesList={gameList} />
+    {game && (
+        <Box px={[5, 15, 20, 90]}> 
+        <>
+            <Grid my={10} templateColumns={['1fr', '1fr', '1fr', 'repeat(12, 1fr)']} gap={6}>
+              <GridItem colSpan={5}><GameLeftDetail game={game} /></GridItem>
+              <GridItem colStart={6} colEnd={-1}><GameRightDetails game={game} /></GridItem>
+            </Grid>   <Box borderBottom='.5px solid #424141' />
+            <Box my={3} mb={20}>
+                <Recommand title={`Games like ${game.title}`} gamesList={gameList} />
+            </Box>
+        </>
         </Box>
-    </>
-    </Box>
+    )}
     </Main>
   )
 }

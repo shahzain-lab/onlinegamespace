@@ -21,17 +21,19 @@ const Games = ({ gamesList }: {gamesList: IGamesList[]}) => {
         />
       }
     >
-      <Box px={[5, 15, 20, 90]}>
-          <Text mt={'24px'} mb={'10px'} fontSize={'32.7px'} color='#aaaaaa'>Top Free Games for PC and Browser In 2023!</Text>
-          {/* Latest PLAYED Slides */}
-          <LatestPlayed gamesList={gamesList} />
+      {gamesList && (
+        <Box px={[5, 15, 20, 90]}>
+            <Text mt={'24px'} mb={'10px'} fontSize={'32.7px'} color='#aaaaaa'>Top Free Games for PC and Browser In 2023!</Text>
+            {/* Latest PLAYED Slides */}
+            <LatestPlayed gamesList={gamesList} />
 
-          {/* SOME FILTERS */}
-          <Filter />
+            {/* SOME FILTERS */}
+            <Filter />
 
-          {/* ALL GAMES */}
-          <AllGames gamesList={gamesList} />
-      </Box>
+            {/* ALL GAMES */}
+            <AllGames gamesList={gamesList} />
+        </Box>
+      )}
     </Main>
   )
 }
