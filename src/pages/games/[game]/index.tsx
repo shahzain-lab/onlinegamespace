@@ -52,13 +52,13 @@ export async function getStaticPaths() {
       url: `${FTP_BASE_URL}/api/games`
     })
     const paths = getGames?.data?.map((game: IGamesList) => {
-      return {params: { game: game.id.toString() }}
+      return {params: { game: game.id }}
     });
 
     return { paths, fallback: false }
 
   } catch(err) {
-    return { paths: null, fallback: false }
+    return { paths: null }
   }
 }
 
