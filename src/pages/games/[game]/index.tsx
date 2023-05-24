@@ -70,17 +70,17 @@ export async function getServerSideProps(context: GetStaticPropsContext) {
 
 
 // get ID's
-export async function getStaticPaths() {
-  const FTP_BASE_URL = 'https://free-to-play-games-database.p.rapidapi.com';
+// export async function getStaticPaths() {
+//   const FTP_BASE_URL = 'https://free-to-play-games-database.p.rapidapi.com';
 
-    const getGames = await axios({
-      ...ftpRequestConfig,
-      url: `${FTP_BASE_URL}/api/games`
-    })
-    const data = getGames.data
-    const paths = data?.map((game: IGamesList) => {
-      return {params: { game: `${game.id}` }}
-    });
+//     const getGames = await axios({
+//       ...ftpRequestConfig,
+//       url: `${FTP_BASE_URL}/api/games`
+//     })
+//     const data = getGames.data
+//     const paths = data?.map((game: IGamesList) => {
+//       return {params: { game: `${game.id}` }}
+//     });
 
-    return { paths, fallback: true }
-}
+//     return { paths, fallback: true }
+// }
