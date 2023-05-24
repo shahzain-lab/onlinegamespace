@@ -40,7 +40,7 @@ const Games = ({ gamesList }: {gamesList: IGamesList[]}) => {
 
 export default Games;
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const FTP_BASE_URL = 'https://free-to-play-games-database.p.rapidapi.com';
 
   try{

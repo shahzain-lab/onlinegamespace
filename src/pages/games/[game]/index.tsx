@@ -41,7 +41,7 @@ const Games = ({game, gameList}: {game: IGameDetails; gameList: IGamesList[]}) =
 export default Games
 
 
-export async function getStaticProps(context: GetStaticPropsContext) {
+export async function getServerSideProps(context: GetStaticPropsContext) {
   const game_id = context?.params?.game as string;
 
   const FTP_BASE_URL = 'https://free-to-play-games-database.p.rapidapi.com';
