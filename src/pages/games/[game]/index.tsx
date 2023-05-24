@@ -16,8 +16,8 @@ const Games = ({game, gameList}: {game: IGameDetails; gameList: IGamesList[]}) =
     <Main
       meta={
       <Meta
-        title={'game title....'}
-        description={'game description....'}
+      title={`${game.title} - Free to play`}
+      description="Free TO Play Online Browser and Desktop Based Games"
       />
     }
   >

@@ -8,6 +8,7 @@ import { Box } from '@chakra-ui/react';
 import axios from 'axios';
 import { ftpRequestConfig } from '@/services/free-to-play.config';
 import { IGamesList } from '@/interfaces/context/IAPIService';
+import Discover from '@/components/home/Discover';
 
 const Index = ({ gamesList }: {gamesList: IGamesList[]}) => {
   // const _gamesList = JSON.parse(gamesList) as IGamesList[];
@@ -16,8 +17,8 @@ const Index = ({ gamesList }: {gamesList: IGamesList[]}) => {
     <Main
       meta={
         <Meta
-          title="Next.js Boilerplate Presentation"
-          description="Next js Boilerplate is the perfect starter code for your project. Build your React application with the Next.js framework."
+          title="Free Epic Games - Free TO Play"
+          description="Free TO Play Online Browser and Desktop Based Games"
         />
       }
       >
@@ -32,6 +33,9 @@ const Index = ({ gamesList }: {gamesList: IGamesList[]}) => {
 
               {/* Recent Page */}
               <Recent gamesList={gamesList} />
+
+              {/* Discover */}
+              <Discover gamesList={gamesList} />
           </Box>
           </>
         )}

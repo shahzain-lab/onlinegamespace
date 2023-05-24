@@ -1,5 +1,4 @@
 import AllGames from '@/components/games/allGames/AllGames'
-import Filter from '@/components/games/filters/Filter'
 import LatestPlayed from '@/components/games/latest/Latest'
 import { IGamesList } from '@/interfaces/context/IAPIService'
 import { ftpRequestConfig } from '@/services/free-to-play.config'
@@ -16,9 +15,9 @@ const Games = ({ gamesList }: {gamesList: IGamesList[]}) => {
       <Main
       meta={
         <Meta
-          title="Next.js Boilerplate Presentation"
-          description="Next js Boilerplate is the perfect starter code for your project. Build your React application with the Next.js framework."
-        />
+        title="Free Epic Games - Free TO Play"
+        description="Free TO Play Online Browser and Desktop Based Games"
+         />
       }
     >
       {gamesList && (
@@ -28,7 +27,7 @@ const Games = ({ gamesList }: {gamesList: IGamesList[]}) => {
             <LatestPlayed gamesList={gamesList} />
 
             {/* SOME FILTERS */}
-            <Filter />
+            {/* <Filter /> */}
 
             {/* ALL GAMES */}
             <AllGames gamesList={gamesList} />

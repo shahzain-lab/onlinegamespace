@@ -10,7 +10,7 @@ const AllGames = ({ gamesList }: {gamesList: IGamesList[]}) => {
     <div className={styles.container}>
       {gamesList && (
         <SimpleGrid mt={15} gap={5} columns={[1, 2, 3, 4]}>
-         {gamesList.slice(1, 100).map((game, i) => (
+         {gamesList.map((game, i) => (
            <ProductCard key={i} game={game} />
            ))}
         </SimpleGrid> 

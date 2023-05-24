@@ -7,13 +7,21 @@ import Link from 'next/link';
 import { IGamesList } from '@/interfaces/context/IAPIService';
 
 const LatestPlayed = ({ gamesList }: {gamesList: IGamesList[]}) => {
+  // const [gameNo, setGameNo] = useState(42)
+  // const [bigGame, setBigGame] = useState<any>('')
 
   if(!gamesList) return <p>Loading....</p>
-    const game = gamesList[42]
+  const bigGame = gamesList[42];
+  // useEffect(() => {
+  //   console.log('NEW GAME ',game)
+  //   console.log('gamesList ',gamesList)
+  //   setBigGame(game)
+  // },[gameNo])
+  // console.log('NEW GAME OUT ',bigGame)
   return (
     <div className={styles.container}>
       
-      {gamesList && (
+      {gamesList && bigGame && (
         <div className={styles.slide}>
           <Box 
           position={'relative'}
@@ -21,8 +29,8 @@ const LatestPlayed = ({ gamesList }: {gamesList: IGamesList[]}) => {
            w='100%'
           >
             <Image
-              src={game?.thumbnail as string}
-              alt={game?.title as string}
+              src={bigGame?.thumbnail as string}
+              alt={bigGame?.title as string}
               w='100%'
               h='100%'
               borderRadius='lg'
@@ -44,26 +52,27 @@ const LatestPlayed = ({ gamesList }: {gamesList: IGamesList[]}) => {
                 fontSize={'sm'}
                 color={'#e4e2e2'}
                 borderRightRadius='md'
-                >{game?.genre}</Badge>
+                >{bigGame?.genre}</Badge>
               </Box>
           </Box>
           <Box px={1} position='relative'>
-              <Text fontSize={'20px'} color={'#aaaaaa'} size='md'>{game?.title}</Text>
+              <Text fontSize={'20px'} color={'#aaaaaa'} size='md'>{bigGame?.title}</Text>
                <Box title='Release Date' color={'#7a8288'} display='flex' alignItems='center'>
                  <Icon as={SlCalender} fontSize='13px' />
-                 <Text fontWeight={'bold'} pl={1} fontSize={'12px'}>{game?.release_date}</Text> 
+                 <Text fontWeight={'bold'} pl={1} fontSize={'12px'}>{bigGame?.release_date}</Text> 
                </Box>
                <Badge background={'#be32d3'} color={'#e4e2e2'} fontWeight='bold' py={.5} fontSize='10px'>FREE</Badge>
 
-              <Text py={2} fontSize={'sm'} color={'#7a8288'}>{game?.short_description}</Text>
+              <Text py={2} fontSize={'sm'} color={'#7a8288'}>{bigGame?.short_description}</Text>
               <Box 
               position='absolute'
                bottom='0%'
                left='0%'
                display='flex'
+               flexDirection={['column', 'row']}
                alignItems='center'
                  >
-                   <Link target={'_blank'} href={`${game?.game_url}`}>
+                   <Link target={'_blank'} href={`${bigGame?.game_url}`}>
                     <Button 
                       border='1px solid #be32d3'
                       color={'#be32d3'}
@@ -71,7 +80,7 @@ const LatestPlayed = ({ gamesList }: {gamesList: IGamesList[]}) => {
                       background='none'
                       size='md'>Play Now <Icon mb={-1} ml={1} fontSize={'20px'} as={BiArrowFromLeft} /></Button>
                    </Link>
-                <Link href={`/games/${game?.id}`}>
+                <Link href={`/games/${bigGame?.id}`}>
                   <Text 
                     p={2.5}
                     _hover={{cursor:'pointer', background: '#3a3f44', transition: '.3s ease-in'}}
