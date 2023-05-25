@@ -27,6 +27,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => (
    data-ad-client="ca-pub-3493853415073232"
    async
    strategy="beforeInteractive"
+   crossOrigin='anonymous'
     src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
 />
     <APIProvider>
