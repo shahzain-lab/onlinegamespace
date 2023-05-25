@@ -22,7 +22,6 @@ import {
   MdEmail,
   MdLocationOn,
   MdFacebook,
-  MdOutlineEmail,
 } from 'react-icons/md';
 import { BsGithub, BsDiscord, BsPerson } from 'react-icons/bs';
 

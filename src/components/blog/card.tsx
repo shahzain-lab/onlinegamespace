@@ -1,5 +1,4 @@
 import {
-  Center,
   useColorModeValue,
   Heading,
   Text,
@@ -10,10 +9,7 @@ import {
 
 import Link from 'next/link'
 
-const IMAGE =
-  '/assets/demo-1.png';
-
-export default function BlogCard({title, src, slogan, link}:any) {
+export default function BlogCard({title, src, slogan}:any) {
   return (
     <Link href={`/blog/${title}`}>
       <Box
