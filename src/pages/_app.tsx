@@ -22,6 +22,13 @@ const MyApp = ({ Component, pageProps }: AppProps) => (
           gtag('config', 'G-359YRG0KF0');
         `}
       </Script>
+      <Script
+   id="Adsense-id"
+   data-ad-client="ca-pub-3493853415073232"
+   async
+   strategy="beforeInteractive"
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+/>
     <APIProvider>
       <Component {...pageProps} />
     </APIProvider>
