@@ -1,5 +1,5 @@
 import { IGamesList } from '@/interfaces/context/IAPIService'
-import { Grid, SimpleGrid, Stack, Text } from '@chakra-ui/react'
+import { SimpleGrid, Stack, Text } from '@chakra-ui/react'
 import React from 'react'
 import ProductCard from '../helpers/product-card'
 
