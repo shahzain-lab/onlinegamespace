@@ -16,8 +16,6 @@ const Meta = (props: IMetaProps) => {
   return (
     <>
       <Head>
-      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3493853415073232"
-     crossOrigin="anonymous"></script>
         <meta charSet="UTF-8" key="charset" />
         <meta
           name="viewport"
