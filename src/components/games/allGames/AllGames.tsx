@@ -1,20 +1,16 @@
-import ProductCard from '@/components/helpers/product-card';
-import { IGamesList } from '@/interfaces/context/IAPIService';
-import { SimpleGrid } from '@chakra-ui/react';
+import { IGamesList } from '@/interfaces/context/IAPIService'
 import React from 'react'
 import styles from './AllGames.module.scss'
+import Paginate from '@/components/helpers/paginate'
 
 const AllGames = ({ gamesList }: {gamesList: IGamesList[]}) => {
   
   return (
     <div className={styles.container}>
-      {gamesList && (
-        <SimpleGrid mt={15} gap={5} columns={[1, 2, 3, 4]}>
-         {gamesList.map((game, i) => (
-           <ProductCard key={i} game={game} />
-           ))}
-        </SimpleGrid> 
-      )}
+      <Paginate 
+        itemPerPage={32}
+        items={gamesList}
+      />
     </div>
   )
 }
