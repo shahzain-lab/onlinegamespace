@@ -4,7 +4,7 @@ import { theme as _theme } from '@/styles/global-style.config';
 // import '@splidejs/react-splide/css';
 // import '@splidejs/react-splide/css/skyblue';
 import { APIProvider } from '@/context/APIContext';
-// import Script from 'next/script';
+import Script from 'next/script';
 
 const theme = extendTheme({ styles: _theme.styles })
 const MyApp = ({ Component, pageProps }: AppProps) => (
@@ -30,6 +30,12 @@ const MyApp = ({ Component, pageProps }: AppProps) => (
    crossOrigin='anonymous'
     src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
 /> */}
+      <Script
+        id="adsbygoogle-init"
+        strategy="afterInteractive"
+        crossOrigin="anonymous"
+        src= "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6515695410137158"
+        />
     <APIProvider>
       <Component {...pageProps} />
     </APIProvider>
