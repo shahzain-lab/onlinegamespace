@@ -8,7 +8,10 @@ class MyDocument extends Document {
   render() {
     return (
       <Html lang={AppConfig.locale}>
-        <Head />
+        <Head>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6515695410137158"
+     crossorigin="anonymous"></script>
+        </Head>
         <body>
           <Main />
           <NextScript />
