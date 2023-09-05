@@ -33,6 +33,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => (
       <Script
         id="adsbygoogle-init"
         strategy="afterInteractive"
+        onError={ (e: any) => { console.error('Script failed to load', e) }}
         crossOrigin="anonymous"
         src= "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6515695410137158"
         />
