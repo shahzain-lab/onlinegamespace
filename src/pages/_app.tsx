@@ -4,7 +4,6 @@ import { theme as _theme } from '@/styles/global-style.config';
 // import '@splidejs/react-splide/css';
 // import '@splidejs/react-splide/css/skyblue';
 import { APIProvider } from '@/context/APIContext';
-import Script from 'next/script';
 
 const theme = extendTheme({ styles: _theme.styles })
 const MyApp = ({ Component, pageProps }: AppProps) => (
