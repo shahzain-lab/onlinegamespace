@@ -4,42 +4,38 @@ import { theme as _theme } from '@/styles/global-style.config';
 // import '@splidejs/react-splide/css';
 // import '@splidejs/react-splide/css/skyblue';
 import { APIProvider } from '@/context/APIContext';
+import { useRef, useEffect} from 'react';
 
 const theme = extendTheme({ styles: _theme.styles })
-const MyApp = ({ Component, pageProps }: AppProps) => (
-  <ChakraProvider theme={theme}>
-     {/* <Script
-        src="https://www.googletagmanager.com/gtag/js?id=G-359YRG0KF0"
-        strategy="afterInteractive"
-      />
-      <Script id="google-analytics" strategy="afterInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){window.dataLayer.push(arguments);}
-          gtag('js', new Date());
+const MyApp = ({ Component, pageProps }: AppProps) => {
+  const banner = useRef<any>()
 
-          gtag('config', 'G-359YRG0KF0');
-        `}
-      </Script>
-      <Script
-   id="Adsense-id"
-   data-ad-client="ca-pub-3493853415073232"
-   async
-   strategy="beforeInteractive"
-   crossOrigin='anonymous'
-    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-/> */}
-      {/* <Script
-        id="adsbygoogle-init"
-        strategy="afterInteractive"
-        onError={ (e: any) => { console.error('Script failed to load', e) }}
-        crossOrigin="anonymous"
-        src= "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6515695410137158"
-        /> */}
+    const atOptions = {
+        key: 'KEY_HERE',
+        format: 'iframe',
+        height: 50,
+        width: 320,
+        params: {},
+    }
+    useEffect(() => {
+    if (banner.current && !banner.current.firstChild) {
+        const conf = document.createElement('script')
+        const script = document.createElement('script')
+        script.type = 'text/javascript'
+        script.src = `//www.highperformancedformats.com/${atOptions.key}/invoke.js`
+        conf.innerHTML = `atOptions = ${JSON.stringify(atOptions)}`
+
+        banner.current.append(conf)
+        banner.current.append(script)
+    }
+}, [banner])
+  return (<ChakraProvider theme={theme}>
+   <div style={{width: '100%'}}>
     <APIProvider>
       <Component {...pageProps} />
     </APIProvider>
+   </div>
   </ChakraProvider>
-);
+)};
 
 export default MyApp;

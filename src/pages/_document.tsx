@@ -9,8 +9,8 @@ class MyDocument extends Document {
     return (
       <Html lang={AppConfig.locale}>
         <Head>
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6515695410137158"
-     crossOrigin="anonymous"></script>
+        {/* <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6515695410137158"
+     crossOrigin="anonymous"></script> */}
         </Head>
         <body>
           <Main />
