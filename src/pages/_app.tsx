@@ -30,7 +30,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
     }
 }, [banner])
   return (<ChakraProvider theme={theme}>
-   <div style={{width: '100%'}}>
+   <div ref={banner} style={{width: '100%'}}>
     <APIProvider>
       <Component {...pageProps} />
     </APIProvider>
